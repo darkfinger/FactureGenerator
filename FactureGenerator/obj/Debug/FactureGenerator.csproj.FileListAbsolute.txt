@@ -1,0 +1,7 @@
+C:\Users\david\source\repos\FactureGenerator\FactureGenerator\bin\Debug\FactureGenerator.exe.config
+C:\Users\david\source\repos\FactureGenerator\FactureGenerator\bin\Debug\FactureGenerator.exe
+C:\Users\david\source\repos\FactureGenerator\FactureGenerator\bin\Debug\FactureGenerator.pdb
+C:\Users\david\source\repos\FactureGenerator\FactureGenerator\obj\Debug\FactureGenerator.csprojResolveAssemblyReference.cache
+C:\Users\david\source\repos\FactureGenerator\FactureGenerator\obj\Debug\FactureGenerator.csproj.CoreCompileInputs.cache
+C:\Users\david\source\repos\FactureGenerator\FactureGenerator\obj\Debug\FactureGenerator.exe
+C:\Users\david\source\repos\FactureGenerator\FactureGenerator\obj\Debug\FactureGenerator.pdb
