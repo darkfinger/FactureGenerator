@@ -1,0 +1,15 @@
+A-320;FP;2;Pantalon;33.99
+A-321;NT;3;Chemise;59.62
+A-322;FP;5;Lunettes;32.1
+A-323;NT;2;Corn Falkes;45.5
+A-324;FP;4;Maple Sirup;65.2
+A-325;NT;2;Back pack;61.772
+A-326;FP;3;Pantalon;66.602
+A-327;NT;5;Chemise;71.432
+A-328;FP;2;Lunettes;76.262
+A-329;NT;4;Corn Falkes;81.092
+A-330;FP;2;Maple Sirup;85.922
+A-331;NT;3;Back pack;90.752
+A-332;FP;5;Pantalon;95.582
+A-333;NT;2;Chemise;100.412
+A-334;FP;4;Lunettes;105.242

@@ -19,6 +19,7 @@ namespace FactureGenerator
     {
         static void Main(string[] args)
         {
+            const string DEFAULT_PATH = "..\\..\\";
             string path;//will contain the full path to the source fille
             string nameOfFile;//will contain the name of the file exctracted from the full path
             short option = 0; //this is our program's status 
@@ -31,6 +32,7 @@ namespace FactureGenerator
             {
                 Console.Write("Give the full path with the name of the file (ex:I:\\article_test.txt): ");
                 path = Console.ReadLine();
+                path = DEFAULT_PATH + path;
                 //whe verify that the path is correct and that the file exist
                 if (String.IsNullOrWhiteSpace(path) || !File.Exists(path))
                 {
