@@ -81,7 +81,7 @@ namespace FactureGenerator
             Console.Write("\nYour choice : ");
         }
 
-        //choiceTreatment handle the different choice made by user 
+        //choiceTreatment handle different choices made the by user, and has 2 parameters. 
         public static void ChoiceTreatment(ref short option, Facture facture)
         {
             string choice = Console.ReadLine();
