@@ -1,5 +1,5 @@
 ﻿/*
- * Program written by David Kapanga and Roger Kashala for the OOP class project (INF731) 
+ * Program written by David Kapanga, Rogers Mukuna Kashala and Jean Robert Leriche for the OOP class's project (INF731) 
  * the program is called FactureGenerator, it reads a file from disk, and from that file, it makes a list of Article and generate a bill
  * this is the Facture.cs class
  * Created on Feb 18 2018
@@ -38,7 +38,7 @@ namespace FactureGenerator
                 }
                 else
                 {
-                    this.nameFacture = DEFAULT_NOFACTURE;
+                    throw new ExceptionsOnFacture(1);
                 }
 
             }
@@ -55,6 +55,11 @@ namespace FactureGenerator
                 {
                     this.pathOfArticleFile = value;
                 }
+                else
+                {
+                    throw new ExceptionsOnFacture(2);
+                }
+                
             }
         }
         private string PathOfFactureFile
@@ -67,6 +72,10 @@ namespace FactureGenerator
                 {
                     this.pathOfFactureFile = value;
                 }
+                else
+                {
+                    throw new ExceptionsOnFacture(3);
+                }
             }
         }
         private string NameOfArticleFille
@@ -78,6 +87,10 @@ namespace FactureGenerator
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     this.nameOfArticleFille = value;
+                }
+                else
+                {
+                    throw new ExceptionsOnFacture(4);
                 }
             }
         }
@@ -93,7 +106,14 @@ namespace FactureGenerator
             }
             set
             {
-                this.listArticle = value;
+                try
+                {
+                    this.listArticle = value;
+                }
+                catch (Exception)
+                {
+                    throw new ExceptionsOnFacture(5);
+                }                
             }
         }
         private float SubTotal
@@ -148,7 +168,6 @@ namespace FactureGenerator
             this.NameOfArticleFille = nameOfArticleFille;
             this.PathOfFactureFile = DEFAULT_PATH;
             this.ListArticle = null;
-
             ReadFile();
         }
 
@@ -159,46 +178,49 @@ namespace FactureGenerator
             //we put it in a try catch, in case we have a trouble reading the file source (ex: if we don't have a reading permision)
             try
             {
-                fReader = new StreamReader(this.PathOfArticleFile, Encoding.UTF7);
-            }
-            catch (Exception e1)
-            {
-                //this is not a good practice, we could have send an error code and the main program will decide what to do
-                //a only the main class should be allow to display messages (on console or windows), close a program.
-                Console.Write("\nFollowing Error occurred while reading file" + this.NameOfArticleFille+"... \n"+e1);
-                Environment.Exit(0);
-            }            
-            string fileData;//will contain each line
-            char[] spliter = new char[] { ';' };
-            string[] item;//array that contain each part split by the spliter
-            List<Article> list=new List<Article>();//dynamic list for articles, to be passed to listArticle
-            while (!fReader.EndOfStream)  // read while file is not at the end
-            {
-                fileData = fReader.ReadLine();
-                item = fileData.Split(spliter);
-                Article aArticle;
-                //we try to write in the array, if the file source has correct format (same number of index needed)
-                try
+                fReader = new StreamReader(this.PathOfArticleFile, Encoding.UTF7);                      
+                string fileData;//will contain each line
+                char[] spliter = new char[] { ';' };
+                string[] item;//array that contain each part split by the spliter
+                List<Article> list=new List<Article>();//dynamic list for articles, to be passed to listArticle
+                while (!fReader.EndOfStream)  // read while file is not at the end
                 {
-                    aArticle = new Article(item[0], item[1], int.Parse(item[2]), item[3], float.Parse(item[4]));
-                    list.Add(aArticle);
+                    fileData = fReader.ReadLine();
+                    item = fileData.Split(spliter);
+                    Article aArticle;
+                    //we try to write in the array, if the file source has correct format (same number of index needed)
+                    try
+                    {
+                        aArticle = new Article(item[0], item[1], int.Parse(item[2]), item[3], float.Parse(item[4]));
+                        list.Add(aArticle);
+                    }
+                    catch (ExceptionsOnArticleCreation e)
+                    {
+                        throw new ExceptionsOnArticleCreation(e.Code);
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+                        throw new ExceptionsOnFacture(7);
+                    }
                 }
-                catch (Exception e)
-                {
-                    //this is not a good practice, we could have send an error code and the main program will decide what to do
-                    //a only the main class should be allow to display messages (on console or windows), close a program.
-                    Console.Write("\nYour file doesn't have the correct format... restart the program and try with a correct file.");
-                    Environment.Exit(0);
-                }
-                
-                
+                this.ListArticle = list;
             }
-            this.ListArticle = list;
-            fReader.Close();
+            catch (ExceptionsOnFacture)
+            {
+                throw new ExceptionsOnFacture(5);
+            }
+            catch (IOException)
+            {
+                throw new ExceptionsOnFacture(6);
+            }
+            finally
+            {
+                fReader.Close();
+            }                
         }
         //method read the details of each data of the listArticle and use it to generate a text file, 
         //if the text file exist, it will overide it
-        public int generateTextFile()
+        public void generateTextFile()
         {
             //we put it in a try catch, in case we have a trouble writing on disk (ex: if we don't have a writing permision)
             try
@@ -208,7 +230,7 @@ namespace FactureGenerator
                 fWriter.WriteLine();
                 fWriter.WriteLine(new String('*', 100));
                 fWriter.WriteLine("*                                                                                                  *");
-                fWriter.WriteLine("  Facture Produite pour le fichier " + this.NameOfArticleFille + " par la team David Kapanga et Roger Kashala ");
+                fWriter.WriteLine("  Facture Produite pour le fichier " + this.NameOfArticleFille + " par la team David Kapanga, Rogers Mukuna Kashala and Jean Robert Leriche ");
                 fWriter.WriteLine("*                                                                                                  *");
                 fWriter.WriteLine(new String('*', 100));
                 fWriter.WriteLine();
@@ -221,13 +243,14 @@ namespace FactureGenerator
                 fWriter.WriteLine("                                                                 TPS : " + this.Tps);
                 fWriter.WriteLine("                                                                 TVQ : " + this.Tvq);
                 fWriter.WriteLine("                                                                 TOTAL : " + this.Total);
-
-                fWriter.Close();
-                return 1;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return -1;
+                throw new ExceptionOnGeneratingFille();
+            }
+            finally
+            {
+                fWriter.Close();
             }
             
         }
@@ -238,7 +261,7 @@ namespace FactureGenerator
             detail += "\n";
             detail +=new String('*', 100);
             detail += "\n*                                                                                                  *\n";
-            detail += "  Facture Produite pour le fichier " + this.NameOfArticleFille + " par la team David Kapanga et Roger Kashala ";
+            detail += "  Facture Produite pour le fichier " + this.NameOfArticleFille + " par la team David Kapanga, Rogers Mukuna Kashala and Jean Robert Leriche ";
             detail += "\n*                                                                                                  *\n";
             detail += new String('*', 100);
             detail += "\n\n";

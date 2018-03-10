@@ -1,5 +1,5 @@
 ﻿/*
- * Program written by David Kapanga and Roger Kashala for the OOP class project (INF731) 
+ * Program written by David Kapanga, Rogers Mukuna Kashala and Jean Robert Leriche for the OOP class's project (INF731) 
  * the program is called FactureGenerator, it reads a file from disk, and from that file, it makes a list of Article and generate a bill
  * this is a class that allows us to print an IEnumerable as a Table Format 
  * Code written by hubeza on Stackoverflow (https://stackoverflow.com/questions/856845/how-to-best-way-to-draw-table-in-console-app-c)

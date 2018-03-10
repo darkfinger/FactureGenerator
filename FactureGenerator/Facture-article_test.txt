@@ -1,13 +1,13 @@
 ﻿
 ****************************************************************************************************
 *                                                                                                  *
-  Facture Produite pour le fichier article_test.txt par la team David Kapanga et Roger Kashala 
+  Facture Produite pour le fichier article_test.txt par la team David Kapanga, Rogers Mukuna Kashala and Jean Robert Leriche 
 *                                                                                                  *
 ****************************************************************************************************
 
  | No Article | Qte | Description           | Price | Category | Total by article | 
  |--------------------------------------------------------------------------------| 
- | z-234      | 2   | pantalons noirs       | 39.99 | fp       | 79.98            | 
+ | z-234      | 2   | pantalons noirs       | 39.99 | nt       | 79.98            | 
  | a-123      | 1   | chemise blanche       | 59.99 | fp       | 59.99            | 
  | b-417      | 4   | paires de chaussettes | 5.97  | fp       | 23.88            | 
  | p-006      | 2   | corn flakes 900g      | 6.99  | nt       | 13.98            | 
@@ -16,6 +16,6 @@
 
 -----------------------------------------------------------------------------------
                                                                  Sub Total : 187.81
-                                                                 TPS : 8.392
-                                                                 TVQ : 16.74204
-                                                                 TOTAL : 212.9441
+                                                                 TPS : 4.393
+                                                                 TVQ : 8.764036
+                                                                 TOTAL : 200.9671
