@@ -5,10 +5,10 @@ C:\Users\david\source\repos\FactureGenerator\FactureGenerator\obj\Debug\FactureG
 C:\Users\david\source\repos\FactureGenerator\FactureGenerator\obj\Debug\FactureGenerator.csproj.CoreCompileInputs.cache
 C:\Users\david\source\repos\FactureGenerator\FactureGenerator\obj\Debug\FactureGenerator.exe
 C:\Users\david\source\repos\FactureGenerator\FactureGenerator\obj\Debug\FactureGenerator.pdb
-F:\Etudes et Formations\USherbrooke\2018 - Hiver\INF731 - POO\FactureGenerator\FactureGenerator\bin\Debug\FactureGenerator.exe.config
-F:\Etudes et Formations\USherbrooke\2018 - Hiver\INF731 - POO\FactureGenerator\FactureGenerator\bin\Debug\FactureGenerator.exe
-F:\Etudes et Formations\USherbrooke\2018 - Hiver\INF731 - POO\FactureGenerator\FactureGenerator\bin\Debug\FactureGenerator.pdb
-F:\Etudes et Formations\USherbrooke\2018 - Hiver\INF731 - POO\FactureGenerator\FactureGenerator\obj\Debug\FactureGenerator.csprojResolveAssemblyReference.cache
-F:\Etudes et Formations\USherbrooke\2018 - Hiver\INF731 - POO\FactureGenerator\FactureGenerator\obj\Debug\FactureGenerator.csproj.CoreCompileInputs.cache
-F:\Etudes et Formations\USherbrooke\2018 - Hiver\INF731 - POO\FactureGenerator\FactureGenerator\obj\Debug\FactureGenerator.exe
-F:\Etudes et Formations\USherbrooke\2018 - Hiver\INF731 - POO\FactureGenerator\FactureGenerator\obj\Debug\FactureGenerator.pdb
+C:\Users\RogersM\Desktop\FactureGenerator-david\FactureGenerator\bin\Debug\FactureGenerator.exe.config
+C:\Users\RogersM\Desktop\FactureGenerator-david\FactureGenerator\bin\Debug\FactureGenerator.exe
+C:\Users\RogersM\Desktop\FactureGenerator-david\FactureGenerator\bin\Debug\FactureGenerator.pdb
+C:\Users\RogersM\Desktop\FactureGenerator-david\FactureGenerator\obj\Debug\FactureGenerator.csprojResolveAssemblyReference.cache
+C:\Users\RogersM\Desktop\FactureGenerator-david\FactureGenerator\obj\Debug\FactureGenerator.csproj.CoreCompileInputs.cache
+C:\Users\RogersM\Desktop\FactureGenerator-david\FactureGenerator\obj\Debug\FactureGenerator.exe
+C:\Users\RogersM\Desktop\FactureGenerator-david\FactureGenerator\obj\Debug\FactureGenerator.pdb

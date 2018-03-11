@@ -1,0 +1,6 @@
+z-234;NT;2;pantalons noirs;39.99
+a-123;FP;1;chemise blanche;59.99
+b-417;FP;4;paires de chaussettes;5.97
+p-006;NT;2;corn flakes 900g;6.99
+p-121;NT;1;sirop d'erable 355ml;5.99
+d-556;FP;1;cartable 2";3.99

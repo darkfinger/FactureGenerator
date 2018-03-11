@@ -1,5 +1,5 @@
 ﻿/*
- * Program written by David Kapanga and Roger Kashala for the OOP class project (INF731) 
+ * Program written by David Kapanga, Rogers Mukuna Kashala and Jean Robert Leriche for the OOP class's project (INF731)
  * the program is called FactureGenerator, it reads a file from disk, and from that file, it makes a list of Article and generate a bill
  * this is the Article.cs class
  * Created on Feb 18 2018
@@ -14,14 +14,6 @@ namespace FactureGenerator
 {
     class Article
     {
-        //we use default value to handle errors, in case of the reading file doesn't provide correct data for the article
-        //a default value will be used instead of throwing an error;
-        const string DEFAULT_NO = "notSet";
-        const string DEFAULT_CATEGORY = "nt";
-        const int DEFAULT_QUANTITY = 0;
-        const string DEFAULT_DESCRIPTION = "No description set";
-        const float DEFAULT_PRICE = 0;
-
         string no;
         char[] category = new char[2];
         int quantity;
@@ -41,14 +33,13 @@ namespace FactureGenerator
                 }
                 else
                 {
-                    this.no=DEFAULT_NO;
-                }
-                               
+                    throw new ExceptionsOnArticleCreation(1);
+                }                               
             }
         }
         public string Category {
-            //the retun value is a string converted from the char array attribut Category
-            get { return this.category[0].ToString() + this.category[1].ToString(); ; }
+            //the return value is a the char arrayconverted to string, from  attribut Category
+            get { return this.category[0].ToString() + this.category[1].ToString(); }
             //we receive a string and we make sure it's the required character, if not set the default value
             set
             {
@@ -60,8 +51,7 @@ namespace FactureGenerator
                 }
                 else
                 {
-                    this.category[0] = DEFAULT_CATEGORY.ToCharArray()[0];
-                    this.category[1] = DEFAULT_CATEGORY.ToCharArray()[1];
+                    throw new ExceptionsOnArticleCreation(2);
                 }
             }
         }
@@ -78,7 +68,7 @@ namespace FactureGenerator
                 }
                 else
                 {
-                    this.quantity = DEFAULT_QUANTITY;
+                    throw new ExceptionsOnArticleCreation(3);
                 }
             }
         }
@@ -92,7 +82,7 @@ namespace FactureGenerator
                 }
                 else
                 {
-                    this.description = DEFAULT_DESCRIPTION;
+                    throw new ExceptionsOnArticleCreation(4);
                 }
                 
             } 
@@ -110,7 +100,7 @@ namespace FactureGenerator
                 }
                 else
                 {
-                    this.price = DEFAULT_PRICE;
+                    throw new ExceptionsOnArticleCreation(5);
                 }
             }
         }        
@@ -127,7 +117,7 @@ namespace FactureGenerator
             {
                 float tpsByUnit = 0;
                 //first we check if the article is taxable, if yes then compute the taxe and return it
-                if (this.Category.Equals("fp")) { 
+                if (this.Category.ToLower().Equals("fp")) { 
                 tpsByUnit = this.TotalByUnit * ((float)5 / 100);
                 }
                 return tpsByUnit;
@@ -139,7 +129,7 @@ namespace FactureGenerator
             {
                 float tvqByUnit = 0;
                 //first we check if the article is taxable, if yes then compute the taxe and return it
-                if (this.Category.Equals("fp"))
+                if (this.Category.ToLower().Equals("fp"))
                 {
                     tvqByUnit = this.TotalByUnit * ((float)9.975 / 100);
                 }                   

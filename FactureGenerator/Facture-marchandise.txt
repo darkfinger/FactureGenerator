@@ -1,7 +1,7 @@
 ﻿
 ****************************************************************************************************
 *                                                                                                  *
-  Facture Produite pour le fichier marchandise.txt par la team David Kapanga et Roger Kashala 
+  Facture Produite pour le fichier marchandise.txt par la team David Kapanga, Rogers Mukuna Kashala and Jean Robert Leriche 
 *                                                                                                  *
 ****************************************************************************************************
 
@@ -25,6 +25,6 @@
 
 -----------------------------------------------------------------------------------
                                                                  Sub Total : 3460.344
-                                                                 TPS : 0
-                                                                 TVQ : 0
-                                                                 TOTAL : 3460.344
+                                                                 TPS : 95.61661
+                                                                 TVQ : 190.7551
+                                                                 TOTAL : 3746.716
