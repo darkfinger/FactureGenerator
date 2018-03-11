@@ -17,14 +17,14 @@ namespace FactureGenerator
         {
             string msg = "\n";
             msg += new string(' ', 5);
-            msg += new string('*', 50);
-            msg += ("\n     *                                                *");
-            msg += ("\n     *      WELCOME IN FACTUREGENERATOR Ver1.0        *");
-            msg += ("\n     *       written by David K. And Roger K.         *");
-            msg += ("\n     *            INF732 Class Project                *");
-            msg += ("\n     *                                                *\n");
+            msg += new string('*', 55);
+            msg += ("\n     *                                                     *");
+            msg += ("\n     *         WELCOME IN FACTUREGENERATOR Ver1.0          *");
+            msg += ("\n     *    written by David K., Rogers K. & Jean Robert L.  *");
+            msg += ("\n     *               INF731 Class Project                  *");
+            msg += ("\n     *                                                     *\n");
             msg += new string(' ', 5);
-            msg += new string('*', 50);
+            msg += new string('*', 55);
             msg +="\n";
             return msg;
         }

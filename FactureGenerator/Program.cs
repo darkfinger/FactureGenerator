@@ -44,7 +44,7 @@ namespace FactureGenerator
             {
                 try
                 {
-                    Console.Write("Give the file's name and extension or the full path (if file are in different folader) (ex:I:\\article_test.txt): ");
+                    Console.Write("Give the file's name and extension or the full path (if file are in different folader. ex:I:\\article_test.txt): ");
                     path = Console.ReadLine();
                     path =Path.GetFullPath(path);                
                     ApplicationAPI.FileCheckingHandler(ref path);
@@ -52,7 +52,7 @@ namespace FactureGenerator
                     nameOfFile = part[part.Length - 1];
                     //initialization of the variable facture, with output name, name of file and full path as parameters
                     facture = new Facture("Facture-" + nameOfFile, path, nameOfFile);
-                    Console.WriteLine(ApplicationAPI.ShowMenu(path, nameOfFile));
+                    Console.Write(ApplicationAPI.ShowMenu(path, nameOfFile));
                     ApplicationAPI.UserChoiceHandler(ref status,facture);
                 }
                 catch (ExceptionStatus e)
