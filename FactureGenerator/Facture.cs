@@ -222,9 +222,10 @@ namespace FactureGenerator
                 throw new ExceptionsOnFacture(6);
             }
         }
+
         //method read the details of each data of the listArticle and write it into a text file, 
         //if the text file exist, it will override it.
-        public void generateTextFile()
+        public void GenerateTextFile()
         {
             //we put it in a try catch, in case we have a trouble writing on disk (ex: if we don't have a writing permision)
             try
@@ -256,6 +257,13 @@ namespace FactureGenerator
             }
             
         }
+
+        //methode GetArticle() return 
+        public Article GetArticle(int index)
+        {
+            return this.ListArticle[index];
+        }
+
         //toString is overrided to return the same bill format generated in the text file
         public override string ToString()
         {

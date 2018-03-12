@@ -63,12 +63,12 @@ namespace FactureGenerator
             switch (option)
             {
                 case 1:
-                    facture.generateTextFile();                     
+                    facture.GenerateTextFile();                     
                     Console.WriteLine(facture.ToString());
                     Console.WriteLine("\nFile created with success \n");
                     break;
                 case 2:
-                    facture.generateTextFile();
+                    facture.GenerateTextFile();
                     Console.WriteLine("File created with success \n");                    
                     break;
                 case 3:
@@ -78,7 +78,7 @@ namespace FactureGenerator
                     //after printing the preview on console, we can propose to the user to save it on disk or discard
                     if (save == 1)
                     {
-                        facture.generateTextFile();
+                        facture.GenerateTextFile();
                         Console.WriteLine("File saved with success \n");
                     }
                     else
