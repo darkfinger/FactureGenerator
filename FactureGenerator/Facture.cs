@@ -1,7 +1,7 @@
 ﻿/*
  * Program written by David Kapanga, Rogers Mukuna Kashala and Jean Robert Leriche for the OOP class's project (INF731) 
  * the program is called FactureGenerator, it reads a file from disk, and from that file, it makes a list of Article and generate a bill
- * this is the Facture.cs class
+ * this is the Facture.cs class, handle the reading and wrinting methode
  * Created on Feb 18 2018
  */
 using System;
@@ -13,7 +13,6 @@ namespace FactureGenerator
 {
     class Facture
     {
-        const string DEFAULT_NOFACTURE = "notSet";
         const string DEFAULT_PATH = "..\\..\\";
         private static StreamReader fReader;
         private static StreamWriter fWriter;
@@ -48,9 +47,7 @@ namespace FactureGenerator
             get { return this.pathOfArticleFile; }
             set
             {
-                // we verified the path of the file in the main methode, so that we considere that the path will be correct
-                //but still we make sure we get something accurate
-                value = value.Replace(" ", "");
+                // we already verified the authenticity of the path from the main methode, here we will only check if the path is null
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     this.pathOfArticleFile = value;
@@ -67,7 +64,6 @@ namespace FactureGenerator
             get { return this.pathOfFactureFile; }
             set
             {
-                value = value.Replace(" ", "");
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     this.pathOfFactureFile = value;
@@ -83,9 +79,9 @@ namespace FactureGenerator
             get { return this.nameOfArticleFille; }
             set
             {
-                value = value.Replace(" ", "");
                 if (!string.IsNullOrWhiteSpace(value))
                 {
+                    
                     this.nameOfArticleFille = value;
                 }
                 else
@@ -161,25 +157,27 @@ namespace FactureGenerator
             }
         }
 
+        //Constructor 
         public Facture(string nameFacture, string pathOfArticleFile, string nameOfArticleFille)
         {
             this.NameFacture = nameFacture;
             this.PathOfArticleFile = pathOfArticleFile;
             this.NameOfArticleFille = nameOfArticleFille;
             this.PathOfFactureFile = DEFAULT_PATH;
-            this.ListArticle = null;
-            ReadFile();
+            this.ListArticle = ReadFile(this.PathOfArticleFile);            
+            
         }
 
         //this method read the file passed througth the constructor, save data found in a list and
-        //pass that lis to  the attribut listArticle
-        private void ReadFile()
+        //return that list, it has one parameter (the path of the file)
+        private List<Article> ReadFile(String filepath)
         {
             //we put it in a try catch, in case we have a trouble reading the file source (ex: if we don't have a reading permision)
             try
             {
-                fReader = new StreamReader(this.PathOfArticleFile, Encoding.UTF7);
+                fReader = new StreamReader(filepath, Encoding.UTF7);
                 string fileData;//will contain each line
+                
                 char[] spliter = new char[] { ';' };
                 string[] item;//array that contain each part split by the spliter
                 List<Article> list = new List<Article>();//dynamic list for articles, to be passed to listArticle
@@ -204,11 +202,12 @@ namespace FactureGenerator
                     }
                     catch (FormatException)
                     {
-                        throw new ExceptionsOnArticleCreation(5);
+                        throw new ExceptionsOnArticleCreation(6);
                     }
-                    this.ListArticle = list;
-                }
-                    fReader.Close();
+                    
+                }                
+                fReader.Close();
+                return list;
             }
             catch (ExceptionsOnFacture)
             {
@@ -221,10 +220,10 @@ namespace FactureGenerator
             catch (UnauthorizedAccessException)
             {
                 throw new ExceptionsOnFacture(6);
-            }           
+            }
         }
-        //method read the details of each data of the listArticle and use it to generate a text file, 
-        //if the text file exist, it will overide it
+        //method read the details of each data of the listArticle and write it into a text file, 
+        //if the text file exist, it will override it.
         public void generateTextFile()
         {
             //we put it in a try catch, in case we have a trouble writing on disk (ex: if we don't have a writing permision)
@@ -233,11 +232,11 @@ namespace FactureGenerator
                 fWriter = new StreamWriter(this.PathOfFactureFile + this.NameFacture, false, Encoding.UTF8);
 
                 fWriter.WriteLine();
-                fWriter.WriteLine(new String('*', 100));
-                fWriter.WriteLine("*                                                                                                  *");
-                fWriter.WriteLine("  Facture Produite pour le fichier " + this.NameOfArticleFille + " par la team David Kapanga, Rogers Mukuna Kashala and Jean Robert Leriche ");
-                fWriter.WriteLine("*                                                                                                  *");
-                fWriter.WriteLine(new String('*', 100));
+                fWriter.WriteLine(new String('*', 131));
+                fWriter.WriteLine("*                                                                                                                                 *");
+                fWriter.WriteLine("*  Facture Produite pour le fichier " + this.NameOfArticleFille + " par la team David Kapanga, Rogers Mukuna Kashala and Jean Robert Leriche *");
+                fWriter.WriteLine("*                                                                                                                                 *");
+                fWriter.WriteLine(new String('*', 131));
                 fWriter.WriteLine();
                 //ToStringTable is a method from the API imported(Class TableParser.cs) that allows us to parse a list to a table view
                 fWriter.WriteLine(ListArticle.ToStringTable(
@@ -262,11 +261,11 @@ namespace FactureGenerator
         {
             string detail = "";
             detail += "\n";
-            detail +=new String('*', 100);
-            detail += "\n*                                                                                                  *\n";
-            detail += "  Facture Produite pour le fichier " + this.NameOfArticleFille + " par la team David Kapanga, Rogers Mukuna Kashala and Jean Robert Leriche ";
-            detail += "\n*                                                                                                  *\n";
-            detail += new String('*', 100);
+            detail +=new String('*', 114);
+            detail += "\n*                                                                                                                *\n";
+            detail += "*  Facture pour le fichier " + this.NameOfArticleFille + " par David Kapanga, Rogers Mukuna Kashala and Jean Robert Leriche *";
+            detail += "\n*                                                                                                                *\n";
+            detail += new String('*', 114);
             detail += "\n\n";
             detail += (ListArticle.ToStringTable(
               new[] { "No Article", "Qte", "Description", "Price", "Category", "Total by article" },

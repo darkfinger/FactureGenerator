@@ -9,6 +9,7 @@
 using System;
 namespace FactureGenerator
 {
+    //class for general ApplicationException
     class ExceptionsAPI : ApplicationException
     {
         private string err_msg;
@@ -35,6 +36,8 @@ namespace FactureGenerator
             }
         }
     }
+
+    //class for Exceptions occured on the article creation
     class ExceptionsOnArticleCreation : ApplicationException
     {
         private string err_msg;
@@ -95,6 +98,8 @@ namespace FactureGenerator
             }
         }
     }
+
+    //class for Exceptions occured when the path or file are not in legal form
     class ExceptionFileDoesntExist : ApplicationException
     {
         private string err_msg;
@@ -121,6 +126,8 @@ namespace FactureGenerator
             }
         }
     }
+
+    //class for Exceptions occured during different operation on Facture
     class ExceptionsOnFacture : ApplicationException
     {
         private string err_msg;
@@ -144,7 +151,7 @@ namespace FactureGenerator
                     this.Err_msg = "uncompatible list found when assigning the article list from source file to the articleList attribut of Facture. \nPlease make sure your source file has the correct format ";
                     break;
                 case 6:
-                    this.Err_msg = "un Error occurred while trying to read the source file. Please Make sure the file exist or you have permission to read on disk";
+                    this.Err_msg = "an Error occurred while trying to read the source file. Please Make sure the file exist or you have permission to read on disk";
                     break;
                 case 7:
                     this.Err_msg = "Index error, your source file must have 5 attribut per article (article number, category, quantity, description and price).\nPlease make sure your source file has the correct format";
@@ -170,7 +177,9 @@ namespace FactureGenerator
             }
         }
     }
-    class ExceptionStatus: ApplicationException
+
+    //class for Exceptions occured on the program's status
+    class ExceptionStatus : ApplicationException
     {
         private string err_msg;
         public ExceptionStatus() : base()
@@ -196,6 +205,8 @@ namespace FactureGenerator
             }
         }
     }
+
+    //class for Exceptions occured when generating the output file.
     class ExceptionOnGeneratingFille : ApplicationException
     {
         private string err_msg;

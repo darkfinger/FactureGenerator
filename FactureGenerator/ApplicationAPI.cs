@@ -29,7 +29,7 @@ namespace FactureGenerator
             return msg;
         }
 
-        //this static method just shows the operations menu on the screen, it has 2 parameters (the name of file and the full path)
+        //this static method, shows operations on the screen, it has 2 parameters (the name of file and the full path)
         public static String ShowMenu(string path, string nameOfFile)
         {
             string msg;
@@ -49,7 +49,7 @@ namespace FactureGenerator
             return msg;
         }
 
-        //choiceTreatment handle the different choices made by user 
+        //UserChoiceHandler handle the different choices made by user, has 2 parameters the option made and the facture ojt for actions 
         public static void UserChoiceHandler(ref short option, Facture facture)
         {
             string choice = Console.ReadLine();
@@ -101,6 +101,8 @@ namespace FactureGenerator
             }
         }
 
+        //FilecheckingHandler() verify if the file and path are authantic
+        //has one string parameter (the path to check)
         public static void FileCheckingHandler(ref string path)
         {
             if (path.Contains("\\bin\\Debug\\"))
