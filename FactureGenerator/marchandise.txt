@@ -1,4 +1,4 @@
-A-320;FP;2;Pantalon;33.99
+A-320;FP;2;pantalon;33.99
 A-321;NT;3;Chemise;59.62
 A-322;FP;5;Lunettes;32.1
 A-323;NT;2;Corn Falkes;45.5

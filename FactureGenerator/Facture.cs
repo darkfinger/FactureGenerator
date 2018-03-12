@@ -178,11 +178,11 @@ namespace FactureGenerator
             //we put it in a try catch, in case we have a trouble reading the file source (ex: if we don't have a reading permision)
             try
             {
-                fReader = new StreamReader(this.PathOfArticleFile, Encoding.UTF7);                      
+                fReader = new StreamReader(this.PathOfArticleFile, Encoding.UTF7);
                 string fileData;//will contain each line
                 char[] spliter = new char[] { ';' };
                 string[] item;//array that contain each part split by the spliter
-                List<Article> list=new List<Article>();//dynamic list for articles, to be passed to listArticle
+                List<Article> list = new List<Article>();//dynamic list for articles, to be passed to listArticle
                 while (!fReader.EndOfStream)  // read while file is not at the end
                 {
                     fileData = fReader.ReadLine();
@@ -202,8 +202,13 @@ namespace FactureGenerator
                     {
                         throw new ExceptionsOnFacture(7);
                     }
+                    catch (FormatException)
+                    {
+                        throw new ExceptionsOnArticleCreation(5);
+                    }
+                    this.ListArticle = list;
                 }
-                this.ListArticle = list;fReader.Close();
+                    fReader.Close();
             }
             catch (ExceptionsOnFacture)
             {
@@ -216,11 +221,7 @@ namespace FactureGenerator
             catch (UnauthorizedAccessException)
             {
                 throw new ExceptionsOnFacture(6);
-            }
-            finally
-            {
-                
-            }                
+            }           
         }
         //method read the details of each data of the listArticle and use it to generate a text file, 
         //if the text file exist, it will overide it
@@ -247,14 +248,12 @@ namespace FactureGenerator
                 fWriter.WriteLine("                                                                 TPS : " + this.Tps);
                 fWriter.WriteLine("                                                                 TVQ : " + this.Tvq);
                 fWriter.WriteLine("                                                                 TOTAL : " + this.Total);
+
+                fWriter.Close();
             }
             catch (Exception)
             {
                 throw new ExceptionOnGeneratingFille();
-            }
-            finally
-            {
-                fWriter.Close();
             }
             
         }

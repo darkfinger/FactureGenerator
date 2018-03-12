@@ -45,19 +45,22 @@ namespace FactureGenerator
             switch (code)
             {
                 case 1:
-                    this.Err_msg = "Wron Article number found in the source file. Please make sure your source file has the correct format.";
+                    this.Err_msg = "Wrong Article number found in the source file. Please make sure your source file has the correct format.";
                     break;
                 case 2:
-                    this.Err_msg = "Wron Article category found in the source file. Please make sure your source file has the correct format.";
+                    this.Err_msg = "Wrong Article category found in the source file. Please make sure your source file has the correct format.";
                     break;
                 case 3:
-                    this.Err_msg = "Wron Article quantity found in the source file. Please make sure your source file has the correct format.";
+                    this.Err_msg = "Wrong Article quantity found in the source file. Please make sure your source file has the correct format.";
                     break;
                 case 4:
-                    this.Err_msg = "Wron Article description found in the source file. Please make sure your source file has the correct format.";
+                    this.Err_msg = "Wrong Article description found in the source file. Please make sure your source file has the correct format.";
                     break;
                 case 5:
-                    this.Err_msg = "Wron Article price found in the source file. Please make sure your source file has the correct format.";
+                    this.Err_msg = "Wrong Article price found in the source file. Please make sure your source file has the correct format.";
+                    break;
+                case 6:
+                    this.Err_msg = "Wrong Format on price or Quantity. Please make sure your source file has the correct format.";
                     break;
             }
         }
@@ -126,7 +129,7 @@ namespace FactureGenerator
             switch (code)
             {
                 case 1:
-                    this.Err_msg = "Wron Facture name send when creating a facture. Please make sure your destination file will be 'facture-Name_of_Source_file'";
+                    this.Err_msg = "Wrong Facture name send when creating a facture. Please make sure your destination file will be 'facture-Name_of_Source_file'";
                     break;
                 case 2:
                     this.Err_msg = "The source path of the file is not of a legal form. ";
@@ -135,7 +138,7 @@ namespace FactureGenerator
                     this.Err_msg = "The destination path of the bill is not of a legal form.";
                     break;
                 case 4:
-                    this.Err_msg = "Wron source file name. Please make sure your file exist and has correct format.";
+                    this.Err_msg = "Wrong source file name. Please make sure your file exist and has correct format.";
                     break;
                 case 5:
                     this.Err_msg = "uncompatible list found when assigning the article list from source file to the articleList attribut of Facture. \nPlease make sure your source file has the correct format ";

@@ -38,9 +38,9 @@ namespace FactureGenerator
             }
         }
         public string Category {
-            //the return value is a the char arrayconverted to string, from  attribut Category
+            //the return value is a the char array attribut converted to string
             get { return this.category[0].ToString() + this.category[1].ToString(); }
-            //we receive a string and we make sure it's the required character, if not set the default value
+            //we receive a string and we make sure it's the required character, if not throw Exception
             set
             {
                 string nt="nt",fp="fp";
@@ -62,9 +62,11 @@ namespace FactureGenerator
             }
             set
             {
-                if (value >= 0)
+                if (value >= 0)//if the quantity is positive
                 {
-                    this.quantity = value;
+                    //chack if the format is in the correct form
+                    try {this.quantity = value; } catch(FormatException) { throw new ExceptionsOnArticleCreation(3); }
+                    
                 }
                 else
                 {
@@ -94,9 +96,10 @@ namespace FactureGenerator
                 float f;
                 //we try to parse the value to float, if success, the value is stored in f, and check if it's positif, 
                 //otherwise set the default value
-                if (float.TryParse(value.ToString(), out f) && f>=0)
+                if ((float.TryParse(value.ToString(), out f) && f>=0))
                 {
-                    this.price = value;
+                    try {this.price = value; } catch (Exception) { throw new ExceptionsOnArticleCreation(5); }
+                    
                 }
                 else
                 {
